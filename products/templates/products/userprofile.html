@@ -1,0 +1,53 @@
+{% extends 'products/main.html' %}
+
+{% block content %}
+    <h3 class="text-primary">{{request.user.customer.name}} profile page</h3>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Profile information:</h3>
+                    <p class="card-text">Customer name: {{request.user.customer.name}}</p>
+                    <p class="card-text">Profile picture</p>
+                </div>
+                <div style="text-align: center;">
+                    <img class="card-img-buttom" src="{{request.user.customer.profilePicture.url}}"
+                        width="200px" height="200px">
+                </div>
+                
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Detailed information:</h3>
+                    <p class="card-text">Phone: {{request.user.customer.phone}}</p>
+                    <p class="card-text">Email: {{request.user.customer.email}}</p>
+                    <a href="{% url 'profilesettings' %}" class="btn btn-primary">Edit profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h4 class="text-primary">{{request.user.customer.name}} orders</h4>
+            <table class="table table-success table-striped">
+                <tr>
+                    <th>Ordercode</th>
+                    <th>Status</th>
+                    <th>Order date</th>
+                </tr>
+                {% for item in userorders %}
+                <tr>
+                    <td>{{item.orderCode}}</td>
+                    <td>{{item.status}}</td>
+                    <td>{{item.orderdate}}</td>
+                </tr>
+                {% endfor %}
+            </table> 
+        </div>
+    </div>
+       
+{% endblock %}
+
+

@@ -1,0 +1,17 @@
+{% extends 'products/main.html' %}
+{% load static %}
+
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{formset.management_form}}
+        
+        <!-- {{myform}} -->
+        {% for form in formset %}
+        {{form}}
+        <hr>
+        {% endfor %}
+        <input type="submit" name="create" value="Create Product">
+
+    </form>
+{% endblock %}

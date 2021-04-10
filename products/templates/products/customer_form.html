@@ -1,0 +1,21 @@
+
+{% extends 'products/main.html' %}
+{% load static %}
+
+{% block content %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label>Create new customer using following fields</label>
+        <hr>
+
+        <label>Customer name: </label>{{customerForm.name}}
+        <br>
+        <label>Customer phone: </label>{{customerForm.phone}}
+        <br>
+        <label>Customer email: </label>{{customerForm.email}}
+        <br>
+        <input type="submit" name="create" value="Create Customer"/>
+    </form>
+
+{% endblock %}

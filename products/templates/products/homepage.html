@@ -1,0 +1,62 @@
+{% extends 'products/main.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm">
+            <div>
+                <p>Search by product</p>
+                <form method="GET">
+                    {{pfilter.form}}
+                    <input type="submit" value="Search" class="btn btn-success btn-sm">
+                    <input type="reset" value="Clear" class="btn btn-success btn-sm">
+                </form>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <p>PRODUCT CATEGORIES:</p>
+            <a class = "btn btn-primary btn-sm btn-inline" href="{% url 'create_category' %}">Add new category</a>
+            <table class="table table-striped table-light">
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Description</th>    
+                </tr>
+                {% for item in categories%}
+                    <tr>
+                        <td><a class="btn btn-success btn-sm btn-block" 
+                            href="{% url 'category' item.id %}">View</a>
+                        </td>
+                        <td> {{item.name}} </td>
+                        <td> {{item.description}} </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    
+        <div class="col-sm-7">
+                
+            <p>LATEST PRODUCTS:</p>
+            <div>
+                <table class="table table-striped table-light">
+                    <tr>
+                        <th>Product Code</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                    </tr>
+                    {% for product in products %}
+                        <tr>
+                            <td> {{product.productCode}} </td>
+                            <td> {{product.name}} </td>
+                            <td> {{product.price}} </td>
+                            <td> {{product.date_created}} </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

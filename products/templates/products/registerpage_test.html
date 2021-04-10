@@ -1,0 +1,21 @@
+<h2>User registration page</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    {{userform.username}}
+    {{userform.email}}
+    {{userform.password1}}
+    {{userform.password2}}
+    
+    <input type="submit" value="Create user">
+</form>
+
+<script>
+    objs = document.getElementsByTagName("input");
+    objs[1].placeholder = "Username";
+    objs[2].placeholder = "Email";
+    objs[3].placeholder = "Password";
+    objs[4].placeholder = "Retype password";
+</script>
+
